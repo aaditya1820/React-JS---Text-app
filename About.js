@@ -1,33 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react'
 
-export default function About() {
-  const [myStyle, setMyStyle] = useState({
-    color: 'black',
-    backgroundColor: 'white',
-  });
+ export default function About(props) {
 
-  const [btnText, setBtnText] = useState("Enable Dark Mode");
-
-  const toggleStyle = () => {
-    if (myStyle.color === 'black') {
-      setMyStyle({
-        color: 'white',
-        backgroundColor: 'black',
-        border: '1px solid white',
-      });
-      setBtnText("Enable Light Mode");
-    } else {
-      setMyStyle({
-        color: 'black',
-        backgroundColor: 'white',
-      });
-      setBtnText("Enable Dark Mode");
-    }
-  };
+let myStyle = {
+   color: props.mode ==='dark'?'white':'#042743',
+  backgroundColor: props.mode ==='dark'?'rgb(33 48 69)':'white', 
+}
 
   return (
     <div className="container" style={myStyle}>
-      <h1 className="my-2">About Us</h1>
+      <h1 className="my-3" style={{color: props.mode ==='dark'?'white':'#042743'}}>About Us</h1>
       <div className="accordion" id="accordionExample" style={myStyle}>
         <div className="accordion-item" style={myStyle}>
           <h2 className="accordion-header">
@@ -40,7 +22,7 @@ export default function About() {
               aria-controls="collapseOne"
               style={myStyle}>
             
-              About this app
+             Analyze your text
             </button>
           </h2>
           <div
@@ -66,7 +48,7 @@ export default function About() {
               aria-controls="collapseTwo"
               style={myStyle}>
         
-              Functionalities
+             Free to use
             </button>
           </h2>
           <div
@@ -93,7 +75,7 @@ export default function About() {
               aria-controls="collapseThree"
               style={myStyle}>
             
-              Advantages
+             Browser compatible
             </button>
           </h2>
           <div
@@ -109,11 +91,11 @@ export default function About() {
         </div>
       </div>
 
-      <div className="my-3">
+      {/* <div className="my-3">
         <button type="button" onClick={toggleStyle} className="btn btn-primary">
           {btnText}
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }
